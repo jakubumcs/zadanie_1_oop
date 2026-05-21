@@ -21,7 +21,9 @@ public class HomeHub {
     public void registerDevice(SmartDevice device) throws DuplicateDeviceException {
         for (SmartDevice existingDevice : devices) {
             if (existingDevice.getId().equals(device.getId())
-                    || existingDevice.getMacAddress().equals(device.getMacAddress())) {
+                    || (existingDevice.getMacAddress() != null
+                    && device.getMacAddress() != null
+                    && existingDevice.getMacAddress().equals(device.getMacAddress()))) {
                 throw new DuplicateDeviceException("Device already registered");
             }
         }
@@ -31,7 +33,7 @@ public class HomeHub {
     public List<SmartDevice> getDevicesByRoom(String room) {
         List<SmartDevice> devicesByRoom = new ArrayList<>();
         for (SmartDevice device : devices) {
-            if (device.getRoom().equals(room)) {
+            if (device.getRoom() != null && device.getRoom().equals(room)) {
                 devicesByRoom.add(device);
             }
         }

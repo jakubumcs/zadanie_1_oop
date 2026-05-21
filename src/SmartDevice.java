@@ -39,6 +39,15 @@ public class SmartDevice implements Comparable<SmartDevice> {
         if (nameComparison != 0) {
             return nameComparison;
         }
+        if (room == null && other.room == null) {
+            return 0;
+        }
+        if (room == null) {
+            return -1;
+        }
+        if (other.room == null) {
+            return 1;
+        }
         return room.compareTo(other.room);
     }
 
