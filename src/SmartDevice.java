@@ -1,4 +1,4 @@
-public class SmartDevice {
+public class SmartDevice implements Comparable<SmartDevice> {
     private final String id;
     private final String name;
     private final String room;
@@ -31,6 +31,15 @@ public class SmartDevice {
 
     public double getFirmwareVersion() {
         return firmwareVersion;
+    }
+
+    @Override
+    public int compareTo(SmartDevice other) {
+        int nameComparison = name.compareTo(other.name);
+        if (nameComparison != 0) {
+            return nameComparison;
+        }
+        return room.compareTo(other.room);
     }
 
     public static class Builder {

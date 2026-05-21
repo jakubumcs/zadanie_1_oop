@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HomeHub {
@@ -25,5 +26,16 @@ public class HomeHub {
             }
         }
         devices.add(device);
+    }
+
+    public List<SmartDevice> getDevicesByRoom(String room) {
+        List<SmartDevice> devicesByRoom = new ArrayList<>();
+        for (SmartDevice device : devices) {
+            if (device.getRoom().equals(room)) {
+                devicesByRoom.add(device);
+            }
+        }
+        Collections.sort(devicesByRoom);
+        return devicesByRoom;
     }
 }
