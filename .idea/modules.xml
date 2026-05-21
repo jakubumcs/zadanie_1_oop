@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/zadanie_na_punkty.iml" filepath="$PROJECT_DIR$/zadanie_na_punkty.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smarthome.iml" filepath="$PROJECT_DIR$/smarthome.iml" />
     </modules>
   </component>
 </project>
