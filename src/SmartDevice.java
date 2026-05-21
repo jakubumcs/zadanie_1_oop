@@ -50,7 +50,10 @@ public class SmartDevice {
             return this;
         }
 
-        public Builder withMacAddress(String macAddress) {
+        public Builder withMacAddress(String macAddress) throws InvalidMacAddressException {
+            if (macAddress.length() < 17 || !macAddress.contains(":")) {
+                throw new InvalidMacAddressException("Invalid MAC address");
+            }
             this.macAddress = macAddress;
             return this;
         }
