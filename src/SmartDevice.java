@@ -1,4 +1,4 @@
-public class SmartDevice implements Comparable<SmartDevice> {
+public class SmartDevice implements Comparable<SmartDevice>,ManageableDevice {
     private final String id;
     private final String name;
     private final String room;
@@ -49,6 +49,24 @@ public class SmartDevice implements Comparable<SmartDevice> {
             return 1;
         }
         return room.compareTo(other.room);
+    }
+
+    @Override
+    public void turnOn() {
+        System.out.println("Smart device " + name + " is turned on.");
+
+    }
+
+    @Override
+    public void turnOff() {
+        System.out.println("Smart device " + name + " is turned off.");
+
+    }
+
+    @Override
+    public void getStatus() {
+        System.out.println("Smart device " + name + " is running firmware version " + firmwareVersion);
+
     }
 
     public static class Builder {

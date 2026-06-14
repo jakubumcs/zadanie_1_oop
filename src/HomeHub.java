@@ -4,8 +4,8 @@ import java.util.List;
 
 public class HomeHub {
     private static HomeHub instance;
+    private List<ManageableDevice> devices;
 
-    private final List<SmartDevice> devices;
 
     private HomeHub() {
         this.devices = new ArrayList<>();
@@ -19,7 +19,9 @@ public class HomeHub {
     }
 
     public void registerDevice(SmartDevice device) throws DuplicateDeviceException {
-        for (SmartDevice existingDevice : devices) {
+        for (ManageableDevice manageableDevice : devices) {
+            SmartDevice existingDevice = (SmartDevice) manageableDevice;
+
             if (existingDevice.getId().equals(device.getId())
                     || (existingDevice.getMacAddress() != null
                     && device.getMacAddress() != null
@@ -32,7 +34,8 @@ public class HomeHub {
 
     public List<SmartDevice> getDevicesByRoom(String room) {
         List<SmartDevice> devicesByRoom = new ArrayList<>();
-        for (SmartDevice device : devices) {
+        for (ManageableDevice manageableDevice : devices) {
+            SmartDevice device = (SmartDevice) manageableDevice;
             if (device.getRoom() != null && device.getRoom().equals(room)) {
                 devicesByRoom.add(device);
             }
