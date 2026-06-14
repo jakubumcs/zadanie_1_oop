@@ -20,6 +20,9 @@ public class HomeHub {
 
     public void registerDevice(SmartDevice device) throws DuplicateDeviceException {
         for (ManageableDevice manageableDevice : devices) {
+            if (!(manageableDevice instanceof SmartDevice)) {
+                continue;
+            }
             SmartDevice existingDevice = (SmartDevice) manageableDevice;
 
             if (existingDevice.getId().equals(device.getId())
@@ -35,6 +38,9 @@ public class HomeHub {
     public List<SmartDevice> getDevicesByRoom(String room) {
         List<SmartDevice> devicesByRoom = new ArrayList<>();
         for (ManageableDevice manageableDevice : devices) {
+            if (!(manageableDevice instanceof SmartDevice)) {
+                continue;
+            }
             SmartDevice device = (SmartDevice) manageableDevice;
             if (device.getRoom() != null && device.getRoom().equals(room)) {
                 devicesByRoom.add(device);
@@ -45,5 +51,9 @@ public class HomeHub {
     }
     public void registerDevice(ManageableDevice device) {
         devices.add(device);
+    }
+
+    public List<ManageableDevice> getDevices() {
+        return new ArrayList<>(devices);
     }
 }

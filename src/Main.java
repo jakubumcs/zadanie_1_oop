@@ -1,4 +1,6 @@
 void main() {
+    HomeHub homeHub = HomeHub.getInstance();
+
     try {
         new SmartDevice.Builder("1", "Sensor")
                 .withMacAddress("123")
@@ -9,10 +11,35 @@ void main() {
     LegacyThermostat legacyThermostat = new LegacyThermostat();
     ThermostatAdapter thermostatAdapter = new ThermostatAdapter(legacyThermostat);
 
-    HomeHub homeHub = HomeHub.getInstance();
     homeHub.registerDevice(thermostatAdapter);
 
     thermostatAdapter.turnOn();
     thermostatAdapter.getStatus();
     thermostatAdapter.turnOff();
+    try {
+        SmartDevice bulb = DeviceFactory.createLivingRoomBulb("2", "Bulb");
+        ManageableDevice monitoredBulb = new EnergyMonitoringDecorator(bulb);
+
+        homeHub.registerDevice(monitoredBulb);
+
+        monitoredBulb.turnOn();
+    } catch (InvalidMacAddressException e) {
+        IO.println(e.getMessage());
+    }
+
+    try {
+        ManageableDevice tv = new SmartDevice.Builder("3", "TV")
+                .withRoom("Living Room")
+                .withMacAddress("AA:BB:CC:DD:EE:01")
+                .withFirmwareVersion(1.5)
+                .build();
+
+        homeHub.registerDevice(tv);
+    } catch (InvalidMacAddressException e) {
+        IO.println(e.getMessage());
+    }
+
+    SmartHomeFacade smartHomeFacade = new SmartHomeFacade(homeHub);
+    smartHomeFacade.movieMode();
+    smartHomeFacade.goodNightRoutine();
 }
