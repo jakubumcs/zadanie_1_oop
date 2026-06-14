@@ -43,4 +43,7 @@ public class HomeHub {
         Collections.sort(devicesByRoom);
         return devicesByRoom;
     }
+    public void registerDevice(ManageableDevice device) {
+        devices.add(device);
+    }
 }
