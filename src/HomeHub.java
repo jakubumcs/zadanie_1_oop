@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class HomeHub {
+public class HomeHub implements SensorObserver {
     private static HomeHub instance;
     private List<ManageableDevice> devices;
 
@@ -55,5 +55,10 @@ public class HomeHub {
 
     public List<ManageableDevice> getDevices() {
         return new ArrayList<>(devices);
+    }
+
+    @Override
+    public void onSensorTriggered(String sensorId, String eventDetails) {
+        System.out.println("ALARM: " + eventDetails + " z czujnika " + sensorId);
     }
 }

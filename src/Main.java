@@ -42,4 +42,8 @@ void main() {
     SmartHomeFacade smartHomeFacade = new SmartHomeFacade(homeHub);
     smartHomeFacade.movieMode();
     smartHomeFacade.goodNightRoutine();
+
+    MotionSensor motionSensor = new MotionSensor("MOTION-1");
+    motionSensor.attach(homeHub);
+    motionSensor.detectMotion();
 }
