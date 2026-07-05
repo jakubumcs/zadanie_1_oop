@@ -16,6 +16,12 @@ void main() {
     thermostatAdapter.turnOn();
     thermostatAdapter.getStatus();
     thermostatAdapter.turnOff();
+    thermostatAdapter.setStrategy(new EcoStrategy());
+    thermostatAdapter.adjustTemperature(21, false);
+    thermostatAdapter.adjustTemperature(21, true);
+    thermostatAdapter.setStrategy(new ComfortStrategy());
+    thermostatAdapter.adjustTemperature(21, false);
+
     try {
         SmartDevice bulb = DeviceFactory.createLivingRoomBulb("2", "Bulb");
         ManageableDevice monitoredBulb = new EnergyMonitoringDecorator(bulb);
