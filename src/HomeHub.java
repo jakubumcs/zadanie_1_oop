@@ -57,6 +57,14 @@ public class HomeHub implements SensorObserver {
         return new ArrayList<>(devices);
     }
 
+    public void runDiagnostics() {
+        DiagnosticsVisitor visitor = new DiagnosticsVisitor();
+        for (ManageableDevice device : devices) {
+            device.accept(visitor);
+        }
+        System.out.println(visitor.getReport());
+    }
+
     @Override
     public void onSensorTriggered(String sensorId, String eventDetails) {
         System.out.println("ALARM: " + eventDetails + " z czujnika " + sensorId);

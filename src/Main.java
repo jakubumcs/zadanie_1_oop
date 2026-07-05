@@ -65,4 +65,6 @@ void main() {
     smartBlind.openBlind();
     smartBlind.closeBlind();
     smartBlind.closeBlind();
+
+    homeHub.runDiagnostics();
 }
