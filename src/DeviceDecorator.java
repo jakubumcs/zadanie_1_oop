@@ -19,4 +19,9 @@ public abstract class DeviceDecorator implements ManageableDevice {
     public void getStatus() {
         device.getStatus();
     }
+
+    @Override
+    public void accept(DeviceVisitor visitor) {
+        visitor.visit(this);
+    }
 }

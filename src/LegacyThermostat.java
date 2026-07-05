@@ -11,4 +11,7 @@ public class LegacyThermostat {
         System.out.println("Legacy thermostat: current temperature is 21°C.");
     }
 
+    public void accept(DeviceVisitor visitor) {
+        visitor.visit(this);
+    }
 }

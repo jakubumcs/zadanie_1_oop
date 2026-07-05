@@ -10,4 +10,9 @@ public class EnergyMonitoringDecorator extends DeviceDecorator {
         super.turnOn();
         System.out.println("Device turned on at: " + LocalDateTime.now());
     }
+
+    @Override
+    public void accept(DeviceVisitor visitor) {
+        visitor.visit(this);
+    }
 }

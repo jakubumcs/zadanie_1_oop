@@ -6,11 +6,20 @@ public class SmartDevice implements Comparable<SmartDevice>,ManageableDevice {
     private final double firmwareVersion;
 
     private SmartDevice(Builder builder) {
-        this.id = builder.id;
-        this.name = builder.name;
-        this.room = builder.room;
-        this.macAddress = builder.macAddress;
-        this.firmwareVersion = builder.firmwareVersion;
+        this(builder.id, builder.name, builder.room, builder.macAddress, builder.firmwareVersion);
+    }
+
+    protected SmartDevice(String id, String name, String room, String macAddress, double firmwareVersion) {
+        this.id = id;
+        this.name = name;
+        this.room = room;
+        this.macAddress = macAddress;
+        this.firmwareVersion = firmwareVersion;
+    }
+
+    @Override
+    public void accept(DeviceVisitor visitor) {
+        visitor.visit(this);
     }
 
     public String getId() {

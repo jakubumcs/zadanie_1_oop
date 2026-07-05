@@ -10,6 +10,7 @@ void main() {
     }
     LegacyThermostat legacyThermostat = new LegacyThermostat();
     ThermostatAdapter thermostatAdapter = new ThermostatAdapter(legacyThermostat);
+    DiagnosticReportVisitor diagnosticReportVisitor = new DiagnosticReportVisitor();
 
     homeHub.registerDevice(thermostatAdapter);
 
@@ -29,6 +30,8 @@ void main() {
         homeHub.registerDevice(monitoredBulb);
 
         monitoredBulb.turnOn();
+        bulb.accept(diagnosticReportVisitor);
+        monitoredBulb.accept(diagnosticReportVisitor);
     } catch (InvalidMacAddressException e) {
         IO.println(e.getMessage());
     }
@@ -41,9 +44,13 @@ void main() {
                 .build();
 
         homeHub.registerDevice(tv);
+        tv.accept(diagnosticReportVisitor);
     } catch (InvalidMacAddressException e) {
         IO.println(e.getMessage());
     }
+
+    thermostatAdapter.accept(diagnosticReportVisitor);
+    legacyThermostat.accept(diagnosticReportVisitor);
 
     SmartHomeFacade smartHomeFacade = new SmartHomeFacade(homeHub);
     smartHomeFacade.movieMode();

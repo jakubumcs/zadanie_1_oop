@@ -34,4 +34,9 @@ public class ThermostatAdapter implements ManageableDevice {
     public void getStatus() {
         thermostat.fetchCurrentTemperature();
     }
+
+    @Override
+    public void accept(DeviceVisitor visitor) {
+        visitor.visit(this);
+    }
 }
