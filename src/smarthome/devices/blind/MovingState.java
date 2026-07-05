@@ -1,3 +1,5 @@
+package smarthome.devices.blind;
+
 public class MovingState implements BlindState {
     private final SmartBlind smartBlind;
 

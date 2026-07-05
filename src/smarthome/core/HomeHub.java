@@ -1,3 +1,10 @@
+package smarthome.core;
+
+import smarthome.devices.SmartDevice;
+import smarthome.exceptions.DuplicateDeviceException;
+import smarthome.observer.SensorObserver;
+import smarthome.visitor.DiagnosticsVisitor;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

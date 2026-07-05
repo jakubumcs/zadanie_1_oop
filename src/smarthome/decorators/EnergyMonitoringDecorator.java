@@ -1,3 +1,8 @@
+package smarthome.decorators;
+
+import smarthome.core.ManageableDevice;
+import smarthome.visitor.DeviceVisitor;
+
 import java.time.LocalDateTime;
 
 public class EnergyMonitoringDecorator extends DeviceDecorator {

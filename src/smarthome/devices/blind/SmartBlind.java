@@ -1,3 +1,5 @@
+package smarthome.devices.blind;
+
 public class SmartBlind {
     private BlindState state;
 

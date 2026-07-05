@@ -1,3 +1,10 @@
+package smarthome.devices;
+
+import smarthome.core.ManageableDevice;
+import smarthome.strategy.EcoStrategy;
+import smarthome.strategy.HeatingStrategy;
+import smarthome.visitor.DeviceVisitor;
+
 public class ThermostatAdapter implements ManageableDevice {
     private LegacyThermostat thermostat;
     private HeatingStrategy strategy;

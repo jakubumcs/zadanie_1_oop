@@ -1,3 +1,8 @@
+package smarthome.decorators;
+
+import smarthome.core.ManageableDevice;
+import smarthome.visitor.DeviceVisitor;
+
 public abstract class DeviceDecorator implements ManageableDevice {
     protected ManageableDevice device;
 
@@ -18,6 +23,10 @@ public abstract class DeviceDecorator implements ManageableDevice {
     @Override
     public void getStatus() {
         device.getStatus();
+    }
+
+    public ManageableDevice getWrappedDevice() {
+        return device;
     }
 
     @Override

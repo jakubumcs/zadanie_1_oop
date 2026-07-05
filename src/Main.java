@@ -1,3 +1,18 @@
+import smarthome.core.HomeHub;
+import smarthome.core.ManageableDevice;
+import smarthome.decorators.EnergyMonitoringDecorator;
+import smarthome.devices.LegacyThermostat;
+import smarthome.devices.SmartDevice;
+import smarthome.devices.ThermostatAdapter;
+import smarthome.devices.blind.SmartBlind;
+import smarthome.exceptions.InvalidMacAddressException;
+import smarthome.facade.SmartHomeFacade;
+import smarthome.factory.DeviceFactory;
+import smarthome.observer.MotionSensor;
+import smarthome.strategy.ComfortStrategy;
+import smarthome.strategy.EcoStrategy;
+import smarthome.visitor.DiagnosticReportVisitor;
+
 void main() {
     HomeHub homeHub = HomeHub.getInstance();
 

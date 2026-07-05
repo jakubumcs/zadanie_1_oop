@@ -1,3 +1,12 @@
+package smarthome.visitor;
+
+import smarthome.decorators.DeviceDecorator;
+import smarthome.decorators.EnergyMonitoringDecorator;
+import smarthome.devices.LegacyThermostat;
+import smarthome.devices.SmartBulb;
+import smarthome.devices.SmartDevice;
+import smarthome.devices.ThermostatAdapter;
+
 public class DiagnosticReportVisitor implements DeviceVisitor {
     @Override
     public void visit(SmartBulb bulb) {

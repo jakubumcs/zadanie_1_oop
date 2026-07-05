@@ -1,3 +1,11 @@
+package smarthome.facade;
+
+import smarthome.core.HomeHub;
+import smarthome.core.ManageableDevice;
+import smarthome.decorators.DeviceDecorator;
+import smarthome.devices.SmartDevice;
+import smarthome.devices.ThermostatAdapter;
+
 public class SmartHomeFacade {
     private final HomeHub homeHub;
 
@@ -38,7 +46,7 @@ public class SmartHomeFacade {
 
     private ManageableDevice unwrap(ManageableDevice device) {
         while (device instanceof DeviceDecorator) {
-            device = ((DeviceDecorator) device).device;
+            device = ((DeviceDecorator) device).getWrappedDevice();
         }
         return device;
     }

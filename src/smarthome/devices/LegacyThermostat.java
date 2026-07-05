@@ -1,3 +1,7 @@
+package smarthome.devices;
+
+import smarthome.visitor.DeviceVisitor;
+
 public class LegacyThermostat {
     void enableHeating() {
         System.out.println("Legacy thermostat: heating enabled.");

@@ -1,3 +1,5 @@
+package smarthome.devices.blind;
+
 public class ClosedState implements BlindState {
     private final SmartBlind smartBlind;
 

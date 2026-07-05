@@ -1,4 +1,10 @@
-public class SmartDevice implements Comparable<SmartDevice>,ManageableDevice {
+package smarthome.devices;
+
+import smarthome.core.ManageableDevice;
+import smarthome.exceptions.InvalidMacAddressException;
+import smarthome.visitor.DeviceVisitor;
+
+public class SmartDevice implements Comparable<SmartDevice>, ManageableDevice {
     private final String id;
     private final String name;
     private final String room;
@@ -9,7 +15,7 @@ public class SmartDevice implements Comparable<SmartDevice>,ManageableDevice {
         this(builder.id, builder.name, builder.room, builder.macAddress, builder.firmwareVersion);
     }
 
-    protected SmartDevice(String id, String name, String room, String macAddress, double firmwareVersion) {
+    public SmartDevice(String id, String name, String room, String macAddress, double firmwareVersion) {
         this.id = id;
         this.name = name;
         this.room = room;

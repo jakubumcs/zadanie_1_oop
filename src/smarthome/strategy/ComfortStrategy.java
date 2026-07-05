@@ -1,3 +1,5 @@
+package smarthome.strategy;
+
 public class ComfortStrategy implements HeatingStrategy {
     @Override
     public double calculateTargetTemperature(double currentTemp, boolean isSomeoneHome) {
