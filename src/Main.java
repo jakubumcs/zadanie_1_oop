@@ -52,4 +52,10 @@ void main() {
     MotionSensor motionSensor = new MotionSensor("MOTION-1");
     motionSensor.attach(homeHub);
     motionSensor.detectMotion();
+
+    SmartBlind smartBlind = new SmartBlind();
+    smartBlind.openBlind();
+    smartBlind.openBlind();
+    smartBlind.closeBlind();
+    smartBlind.closeBlind();
 }
